@@ -1,7 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { GooeyText } from "@/components/gooey-text";
+import { GlassFilter, LiquidGlassButton } from "@/components/liquid-glass";
+
+const TAGLINES = [
+  "Pioneering Web Design",
+  "Free, forever",
+  "No card required",
+  "Ready in 2 minutes",
+  "One click, then wait",
+];
 
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -18,7 +27,7 @@ function FloatingPaths({ position }: { position: number }) {
 
   return (
     <div className="pointer-events-none absolute inset-0">
-      {/* slice = cover, so the strokes bleed off every edge (no boxed cutoff) */}
+      {/* slice = cover, so strokes bleed off every edge (no boxed cutoff) */}
       <svg
         className="h-full w-full text-white"
         viewBox="0 0 696 316"
@@ -51,68 +60,45 @@ function FloatingPaths({ position }: { position: number }) {
   );
 }
 
-export function BackgroundPaths({
-  title = "Pioneering Web Design",
-}: {
-  title?: string;
-}) {
-  const words = title.split(" ");
-
+export function BackgroundPaths() {
   return (
-    <section className="relative flex flex-1 w-full items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative flex w-full flex-1 items-center justify-center overflow-hidden">
+      <GlassFilter />
+
+      {/* Paths sit higher on mobile (≈3/4 up) and centre on larger screens */}
+      <div className="absolute inset-0 -translate-y-[16%] sm:translate-y-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center md:px-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-4 text-center md:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.5 }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="w-full"
         >
-          <h2 className="mb-10 text-5xl font-bold tracking-tighter text-white sm:text-7xl md:text-8xl">
-            {words.map((word, wordIndex) => (
-              <span key={wordIndex} className="mr-4 inline-block last:mr-0">
-                {word.split("").map((letter, letterIndex) => (
-                  <motion.span
-                    key={`${wordIndex}-${letterIndex}`}
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay:
-                        0.6 + wordIndex * 0.1 + letterIndex * 0.03,
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 25,
-                    }}
-                    className="inline-block bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </span>
-            ))}
-          </h2>
+          <GooeyText
+            texts={TAGLINES}
+            morphTime={1}
+            cooldownTime={2.4}
+            className="h-[clamp(4rem,18vw,10rem)]"
+            textClassName="text-[clamp(1.4rem,7.5vw,76px)] font-bold tracking-tight"
+          />
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
-            className="group relative inline-block overflow-hidden rounded-2xl bg-gradient-to-b from-white/15 to-white/5 p-px shadow-lg backdrop-blur-lg transition-shadow duration-300 hover:shadow-xl"
-          >
-            <Button
-              variant="ghost"
-              className="rounded-[1.15rem] border border-white/10 bg-black/80 px-8 py-6 text-lg font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-black group-hover:-translate-y-0.5"
-            >
-              <span className="opacity-90 transition-opacity group-hover:opacity-100">
-                Contact us
-              </span>
-              <span className="ml-3 opacity-70 transition-all duration-300 group-hover:translate-x-1.5 group-hover:opacity-100">
-                →
-              </span>
-            </Button>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+          className="mt-10"
+        >
+          <LiquidGlassButton>
+            <span className="flex items-center text-base text-white sm:text-lg">
+              See your website
+              <span className="ml-3 transition-transform duration-300">→</span>
+            </span>
+          </LiquidGlassButton>
         </motion.div>
       </div>
     </section>
