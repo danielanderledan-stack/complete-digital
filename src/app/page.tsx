@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { LoadingScreen } from "@/components/loading-screen";
 import { SiteHeader } from "@/components/site-header";
 import { BackgroundPaths } from "@/components/background-paths";
+import { ContainerScroll } from "@/components/container-scroll";
 
 export default function Home() {
   const [revealed, setRevealed] = useState(false);
@@ -16,10 +17,29 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative flex min-h-screen flex-col">
-        <SiteHeader show={revealed} />
-        {revealed && <BackgroundPaths />}
-      </div>
+      <SiteHeader show={revealed} />
+
+      {revealed && (
+        <main>
+          <div className="flex min-h-screen flex-col">
+            <BackgroundPaths />
+          </div>
+
+          <ContainerScroll
+            videoSrc="/placeholder.mp4"
+            titleComponent={
+              <div className="mb-4 md:mb-6">
+                <p className="text-sm font-medium uppercase tracking-[0.25em] text-white/55 md:text-base">
+                  Totally free
+                </p>
+                <h2 className="mt-2 text-4xl font-bold tracking-tight text-white md:text-7xl">
+                  VISUAL EDITOR
+                </h2>
+              </div>
+            }
+          />
+        </main>
+      )}
 
       {mounted && !revealed && (
         <LoadingScreen onComplete={() => setRevealed(true)} />

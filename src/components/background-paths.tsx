@@ -65,8 +65,17 @@ export function BackgroundPaths() {
     <section className="relative flex w-full flex-1 items-center justify-center overflow-hidden">
       <GlassFilter />
 
-      {/* Paths sit higher on mobile (≈3/4 up) and centre on larger screens */}
-      <div className="absolute inset-0 -translate-y-[16%] sm:translate-y-0">
+      {/* Paths sit higher on mobile (≈3/4 up) and centre on larger screens.
+          Masked so the strokes fade out toward the bottom (no hard wall). */}
+      <div
+        className="absolute inset-0 -translate-y-[16%] sm:translate-y-0"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to bottom, #000 0%, #000 52%, transparent 88%)",
+          maskImage:
+            "linear-gradient(to bottom, #000 0%, #000 52%, transparent 88%)",
+        }}
+      >
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
