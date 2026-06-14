@@ -1,7 +1,7 @@
 {
   "region": "Victoria, Australia",
-  "center": { "lng": 144.66, "lat": -37.95 },
-  "zoom": 8.2,
+  "center": { "lng": 144.97, "lat": -37.92 },
+  "zoom": 8,
   "points": [
     {
       "id": "melbourne",
