@@ -7,11 +7,11 @@ import { House } from "lucide-react";
 export function GlassNavbar() {
   return (
     <nav className="flex justify-center">
-      <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-3 py-2 shadow-lg shadow-black/5 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-white/50">
+      <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 shadow-lg shadow-black/30 backdrop-blur-xl backdrop-saturate-150">
         <a
           href="/"
           aria-label="Home"
-          className="flex size-9 items-center justify-center rounded-full text-black transition-colors hover:bg-black/5 active:bg-black/10"
+          className="flex size-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:bg-white/20"
         >
           <House className="size-5" strokeWidth={2} />
         </a>

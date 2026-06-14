@@ -2,9 +2,9 @@
 @import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted-foreground: #6b7280;
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted-foreground: #9ca3af;
 }
 
 @theme inline {
