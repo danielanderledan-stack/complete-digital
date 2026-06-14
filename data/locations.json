@@ -1,0 +1,19 @@
+{
+  "region": "Victoria, Australia",
+  "center": { "lng": 144.66, "lat": -37.95 },
+  "zoom": 8.2,
+  "points": [
+    {
+      "id": "melbourne",
+      "name": "Melbourne",
+      "lng": 144.9631,
+      "lat": -37.8136
+    },
+    {
+      "id": "geelong",
+      "name": "Geelong",
+      "lng": 144.3617,
+      "lat": -38.1499
+    }
+  ]
+}
