@@ -11,12 +11,10 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // The intro is mandatory: it must always appear and play through before
+    // the page is revealed. We deliberately do NOT skip it for reduced motion
+    // (framer-motion's default reducedMotion is "never", so it still plays).
     setMounted(true);
-    // Respect reduced motion: skip the intro entirely.
-    const reduce = window.matchMedia?.(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce) setRevealed(true);
   }, []);
 
   return (
