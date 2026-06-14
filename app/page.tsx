@@ -2,6 +2,7 @@ import { GlassNavbar } from "@/components/site/glass-navbar";
 import { LocationMap } from "@/components/site/location-map";
 import { RobotSection } from "@/components/site/robot-section";
 import { AssistantSection } from "@/components/site/assistant-section";
+import { CrmSection } from "@/components/site/crm-section";
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
 
       {/* Personal assistant capabilities */}
       <AssistantSection />
+
+      {/* CRM scroll-animation showcase */}
+      <CrmSection />
     </main>
   );
 }

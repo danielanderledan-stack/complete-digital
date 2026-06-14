@@ -12,7 +12,7 @@ const CAPABILITIES = [
 
 export function AssistantSection() {
   return (
-    <section className="flex min-h-svh flex-col justify-center bg-black px-6 py-24">
+    <section className="flex flex-col bg-black px-6 pt-20 pb-28">
       <motion.h2
         initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

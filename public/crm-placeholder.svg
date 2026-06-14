@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Geist, Arial, sans-serif">
+  <rect width="1280" height="800" fill="#0b0b0c"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="800" fill="#121214"/>
+  <circle cx="40" cy="44" r="10" fill="#ef4444"/>
+  <text x="64" y="50" fill="#ffffff" font-size="20" font-weight="600">Orbit CRM</text>
+  <rect x="20" y="100" width="200" height="40" rx="10" fill="#1f1f23"/>
+  <text x="40" y="126" fill="#ffffff" font-size="15">Dashboard</text>
+  <text x="40" y="186" fill="#8a8a92" font-size="15">Customers</text>
+  <text x="40" y="236" fill="#8a8a92" font-size="15">Quotes</text>
+  <text x="40" y="286" fill="#8a8a92" font-size="15">Messages</text>
+  <text x="40" y="336" fill="#8a8a92" font-size="15">Follow-ups</text>
+  <text x="40" y="386" fill="#8a8a92" font-size="15">Website</text>
+
+  <!-- Top bar -->
+  <text x="280" y="56" fill="#ffffff" font-size="26" font-weight="600">Good morning</text>
+  <rect x="980" y="32" width="270" height="40" rx="20" fill="#161618"/>
+  <text x="1004" y="58" fill="#6b6b73" font-size="14">Search…</text>
+
+  <!-- Stat cards -->
+  <g>
+    <rect x="280" y="100" width="300" height="130" rx="16" fill="#141416"/>
+    <text x="304" y="138" fill="#8a8a92" font-size="14">Open quotes</text>
+    <text x="304" y="190" fill="#ffffff" font-size="40" font-weight="700">24</text>
+
+    <rect x="600" y="100" width="300" height="130" rx="16" fill="#141416"/>
+    <text x="624" y="138" fill="#8a8a92" font-size="14">Replies sent</text>
+    <text x="624" y="190" fill="#ffffff" font-size="40" font-weight="700">312</text>
+
+    <rect x="920" y="100" width="330" height="130" rx="16" fill="#141416"/>
+    <text x="944" y="138" fill="#8a8a92" font-size="14">Booked this week</text>
+    <text x="944" y="190" fill="#ef4444" font-size="40" font-weight="700">18</text>
+  </g>
+
+  <!-- Chart panel -->
+  <rect x="280" y="260" width="620" height="300" rx="16" fill="#141416"/>
+  <text x="304" y="298" fill="#ffffff" font-size="16" font-weight="600">Activity</text>
+  <polyline points="304,500 384,470 464,490 544,420 624,440 704,360 784,390 864,320"
+    fill="none" stroke="#ef4444" stroke-width="3"/>
+  <g fill="#26262b">
+    <rect x="304" y="520" width="40" height="10" rx="5"/>
+    <rect x="384" y="520" width="40" height="10" rx="5"/>
+    <rect x="464" y="520" width="40" height="10" rx="5"/>
+    <rect x="544" y="520" width="40" height="10" rx="5"/>
+    <rect x="624" y="520" width="40" height="10" rx="5"/>
+  </g>
+
+  <!-- List panel -->
+  <rect x="920" y="260" width="330" height="300" rx="16" fill="#141416"/>
+  <text x="944" y="298" fill="#ffffff" font-size="16" font-weight="600">Recent</text>
+  <g>
+    <circle cx="956" cy="340" r="8" fill="#ef4444"/>
+    <rect x="980" y="332" width="220" height="14" rx="7" fill="#26262b"/>
+    <circle cx="956" cy="384" r="8" fill="#3a3a42"/>
+    <rect x="980" y="376" width="180" height="14" rx="7" fill="#26262b"/>
+    <circle cx="956" cy="428" r="8" fill="#3a3a42"/>
+    <rect x="980" y="420" width="200" height="14" rx="7" fill="#26262b"/>
+    <circle cx="956" cy="472" r="8" fill="#3a3a42"/>
+    <rect x="980" y="464" width="160" height="14" rx="7" fill="#26262b"/>
+  </g>
+
+  <!-- Bottom row -->
+  <rect x="280" y="590" width="970" height="150" rx="16" fill="#141416"/>
+  <text x="304" y="628" fill="#ffffff" font-size="16" font-weight="600">Pipeline</text>
+  <g fill="#26262b">
+    <rect x="304" y="660" width="220" height="50" rx="10"/>
+    <rect x="544" y="660" width="220" height="50" rx="10"/>
+    <rect x="784" y="660" width="220" height="50" rx="10"/>
+    <rect x="1024" y="660" width="200" height="50" rx="10"/>
+  </g>
+</svg>
