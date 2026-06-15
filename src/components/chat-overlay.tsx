@@ -1,48 +1,77 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Msg = { from: "ai" | "user"; text: string };
 
+// Orbit only has access to the website — every task is a site change, and the
+// one out-of-scope request gets politely declined.
 const CHAT: Msg[] = [
   { from: "ai", text: "Hey! I'm Orbit. How can I help?" },
   { from: "user", text: "Add an image gallery page" },
-  { from: "ai", text: "Ok, I'm on it." },
-  { from: "ai", text: "Done — let me know what you think" },
-  { from: "user", text: "Great, thanks!" },
+  { from: "ai", text: "On it…" },
+  { from: "ai", text: "Done — take a look" },
+  { from: "user", text: "Change the main heading to navy" },
+  { from: "ai", text: "Updated the heading colour" },
+  { from: "user", text: "Add a contact form to the homepage" },
+  { from: "ai", text: "Added — it'll email you on every submit" },
+  { from: "user", text: "Can you reply to those emails too?" },
+  {
+    from: "ai",
+    text: "I can only make changes to your website — email's outside my reach",
+  },
+  { from: "user", text: "Fair enough. Speed it up on mobile?" },
+  { from: "ai", text: "Optimised the images and scripts — about 40% faster" },
+  { from: "user", text: "Amazing, thanks!" },
+  { from: "ai", text: "Anytime" },
 ];
 
 const MAX_VISIBLE = 3;
 const STEP_MS = 2200;
 
 /**
- * Looping chat demo. New bubbles fade in at the bottom; as each one arrives
- * the stack slides up and the oldest flies up and fades out. Purely on a
- * timer (not scroll-driven) so it always animates while the robot is pinned.
+ * Looping chat demo. Only starts once the overlay is actually in view, and
+ * pauses when scrolled away. New bubbles fade in at the bottom; as each one
+ * arrives the stack slides up and the oldest flies up and fades out.
  */
 export function ChatOverlay() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.4 });
+
   const [items, setItems] = useState<{ id: number; msg: Msg }[]>([]);
+  const stepRef = useRef(0);
+  const idRef = useRef(0);
+  const startedRef = useRef(false);
 
   useEffect(() => {
-    let step = 0;
-    let id = 0;
+    if (!inView) return;
+
     const advance = () => {
       setItems((prev) => {
-        const next = [...prev, { id: id++, msg: CHAT[step % CHAT.length] }];
-        step++;
+        const next = [...prev, { id: idRef.current++, msg: CHAT[stepRef.current % CHAT.length] }];
+        stepRef.current++;
         while (next.length > MAX_VISIBLE) next.shift();
         return next;
       });
     };
-    advance();
+
+    // Show the first message immediately the first time it comes into view.
+    if (!startedRef.current) {
+      startedRef.current = true;
+      advance();
+    }
+
     const t = setInterval(advance, STEP_MS);
     return () => clearInterval(t);
-  }, []);
+  }, [inView]);
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-[12%] bottom-[42%] z-30 mx-auto flex max-w-md flex-col justify-end px-4">
+    <div
+      ref={ref}
+      className="pointer-events-none absolute inset-x-0 top-[12%] bottom-[42%] z-30 mx-auto flex max-w-md flex-col justify-end px-4"
+    >
       <AnimatePresence initial={false}>
         {items.map(({ id, msg }) => (
           <motion.div
