@@ -70,7 +70,7 @@ export function ChatOverlay() {
   return (
     <div
       ref={ref}
-      className="pointer-events-none absolute inset-x-0 top-[12%] bottom-[42%] z-30 mx-auto flex max-w-md flex-col justify-end px-4"
+      className="pointer-events-none absolute inset-x-0 top-[32%] bottom-[16%] z-30 mx-auto flex max-w-md flex-col justify-end px-4"
     >
       <AnimatePresence initial={false}>
         {items.map(({ id, msg }) => (

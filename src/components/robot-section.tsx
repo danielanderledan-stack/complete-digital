@@ -34,8 +34,8 @@ export function RobotSection() {
         {/* Looping chat demo, layered above the robot and the headline */}
         <ChatOverlay />
 
-        {/* Scroll-driven morphing headline, sitting below the chat */}
-        <div className="absolute inset-x-0 bottom-[12%] z-20 flex justify-center px-4">
+        {/* Scroll-driven morphing headline, at the robot's head */}
+        <div className="absolute inset-x-0 top-[14%] z-20 flex justify-center px-4">
           <ScrollMorphText
             from={`Meet ${ASSISTANT_NAME}`}
             to="Your website assistant"
