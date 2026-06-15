@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { BackgroundPaths } from "@/components/background-paths";
 import { ContainerScroll } from "@/components/container-scroll";
 import { IncludesSection } from "@/components/includes-section";
+import { RobotSection } from "@/components/robot-section";
 
 export default function Home() {
   const [revealed, setRevealed] = useState(false);
@@ -41,6 +42,8 @@ export default function Home() {
           />
 
           <IncludesSection />
+
+          <RobotSection />
         </main>
       )}
 
