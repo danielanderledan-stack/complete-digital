@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import { SplineScene } from "@/components/spline-scene";
 import { ScrollMorphText } from "@/components/scroll-morph-text";
+import { ChatOverlay } from "@/components/chat-overlay";
 import { ASSISTANT_NAME } from "@/lib/brand";
 
 // Cursor-following Spline robot.
@@ -30,14 +31,17 @@ export function RobotSection() {
           <SplineScene scene={ROBOT_SCENE} className="h-full w-full" />
         </div>
 
-        {/* Scroll-driven morphing headline */}
-        <div className="absolute inset-x-0 top-[14%] z-20 flex justify-center px-4">
+        {/* Looping chat demo, layered above the robot and the headline */}
+        <ChatOverlay />
+
+        {/* Scroll-driven morphing headline, sitting below the chat */}
+        <div className="absolute inset-x-0 bottom-[12%] z-20 flex justify-center px-4">
           <ScrollMorphText
             from={`Meet ${ASSISTANT_NAME}`}
-            to="Your time-saver"
+            to="Your website assistant"
             progress={scrollYProgress}
-            className="h-[140px] w-full"
-            textClassName="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
+            className="h-[120px] w-full"
+            textClassName="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-bold tracking-tight text-white text-[clamp(1.5rem,6vw,68px)]"
           />
         </div>
       </div>
